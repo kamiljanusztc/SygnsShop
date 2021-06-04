@@ -1,0 +1,29 @@
+@import '../../../styles/settings.scss';
+
+.root {
+
+  .appBar {
+    background: white;
+
+    .toolBar {
+      justify-content: space-between;
+
+      .sygnsHome {
+        background: transparent;
+
+        .logo {
+          width: 80px;
+          margin: -40px 0;
+        }
+      }
+
+      .shop {
+        text-decoration: none;
+      }
+
+      .cart {
+        color: #F945EC;
+      }
+    }
+  }
+}

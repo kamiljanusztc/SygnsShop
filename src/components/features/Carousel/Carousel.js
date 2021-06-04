@@ -1,0 +1,89 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import clsx from 'clsx';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import Carousel from 'react-bootstrap/Carousel';
+// import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+// import { connect } from 'react-redux';
+// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+
+import styles from './Carousel.module.scss';
+
+const Component = ({className}) => (
+  <div className={clsx(className, styles.root)}>
+    <h3 className={styles.hotDeals}>HOT DEALS</h3>
+    <Carousel
+      // activeIndex={index} onSelect={handleSelect}
+    >
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="/images/products/hot-deal.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h1 className={styles.hotDealTitle}>HEART</h1>
+          <p className={styles.hotDealPrice}>1100€</p>
+          <Button className={styles.btn}>
+            Add to cart
+          </Button>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="/images/products/hot-deal-1.jpg"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          <h1 className={styles.hotDealTitle}>BOB</h1>
+          <p className={styles.hotDealPrice}>900€</p>
+          <Button className={styles.btn}>
+            Add to cart
+          </Button>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="/images/products/hot-deal-2.jpg"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h1 className={styles.hotDealTitle}>BOOM!</h1>
+          <p className={styles.hotDealPrice}>1000€</p>
+          <Button className={styles.btn}>
+            Add to cart
+          </Button>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  </div>
+);
+
+Component.propTypes = {
+  className: PropTypes.string,
+};
+
+// const mapStateToProps = state => ({
+//   someProp: reduxSelector(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   someAction: arg => dispatch(reduxActionCreator(arg)),
+// });
+
+// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+export {
+  Component as Carousel,
+  // Container as Carousel,
+  Component as CarouselComponent,
+};
+
+

@@ -1,0 +1,40 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  background: $color-black;
+
+  .hotDeals {
+    color: $color-white;
+    padding: 20px 0;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .moreProducts {
+    background: $color-main;
+    color: $color-white;
+    // padding: 20px;
+    border-radius: 5px;
+  }
+
+  .btn {
+    background: $color-main;
+    color: $color-white;
+    padding: 10px 15px;
+    margin: 30px 0;
+  }
+
+  .hotDealTitle {
+    color: $color-main;
+    font-size: 300px;
+    opacity: 0.2;
+  }
+
+  .hotDealPrice {
+    background: $color-black;
+    color: $color-white;
+    padding: 5px;
+    width: 80px;
+    margin: 0 auto;
+  }
+}

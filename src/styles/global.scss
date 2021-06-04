@@ -1,0 +1,10 @@
+@import "settings.scss";
+@import "typography.scss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+}
