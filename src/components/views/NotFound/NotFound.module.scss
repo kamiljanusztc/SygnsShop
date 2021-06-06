@@ -1,4 +1,13 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  .notFound {
+    text-align: center;
+    padding-top: 90px;
+
+    .homeLink {
+      color: $color-main;
+      text-decoration: none;
+    }
+  }
+}

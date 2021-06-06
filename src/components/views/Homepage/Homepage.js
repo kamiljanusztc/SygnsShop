@@ -7,25 +7,22 @@ import clsx from 'clsx';
 // import Paper from '@material-ui/core/Paper';
 // import Grid from '@material-ui/core/Grid';
 
-// import Button from '@material-ui/core/Button';
-// import Card from '@material-ui/core/Card';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
-// import IconButton from '@material-ui/core/IconButton';
-// import Typography from '@material-ui/core/Typography';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import ShareIcon from '@material-ui/icons/Share';
-// import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
 
-// import { getAll } from '../../../redux/productsRedux';
+
+import { getAll } from '../../../redux/productsRedux';
 import { Carousel } from '../../features/Carousel/Carousel';
-
-// import { Container, Row, Col } from 'react-bootstrap';
-
 import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { Link } from 'react-router-dom';
 
 import styles from './Homepage.module.scss';
 
@@ -39,14 +36,16 @@ class Component extends React.Component {
       <div className={clsx(className, styles.root)}>
         <Carousel className={styles.carousel}/>
 
-        {/* <div className={styles.card}>
+
+
+        <div className={styles.card}>
           {products.map(product => (
-            <Card key={product._id}className={styles.cardItem}>
+            <Card key={product._id} className={styles.cardItem}>
               <Link to={`/product/${product._id}`} className={styles.cardLink}>
                 <CardActionArea>
                   <CardMedia
                     className={styles.image}
-                    image={product.photo}
+                    image={product.image}
                     component="img"
                   />
                   <CardContent>
@@ -65,14 +64,11 @@ class Component extends React.Component {
                   <IconButton aria-label="share">
                     <ShareIcon />
                   </IconButton>
-                  <Button size="small" color="primary">
-                  Learn More
-                  </Button>
                 </CardActions>
               </Link>
             </Card>
           ))}
-        </div> */}
+        </div>
 
       </div>
 
@@ -90,14 +86,8 @@ Component.propTypes = {
       id: PropTypes.number,
       title: PropTypes.string,
       content: PropTypes.string,
-      datePublication: PropTypes.string,
-      dateLastUpdate: PropTypes.string,
-      email: PropTypes.string,
-      status: PropTypes.string,
-      image: PropTypes.string,
       price: PropTypes.number,
-      phone: PropTypes.string,
-      location: PropTypes.string,
+      image: PropTypes.string,
     })
   ),
 };
@@ -110,19 +100,19 @@ Component.propTypes = {
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const mapStateToProps = state => ({
-//   posts: getAll(state),
-// });
+const mapStateToProps = state => ({
+  products: getAll(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   fetchPublishedPosts: () => dispatch(fetchPublished()),
 // });
 
 // const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-// const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps)(Component);
 
 export {
-  Component as Homepage,
-  // Container as Homepage,
+  // Component as Homepage,
+  Container as Homepage,
   Component as HomepageComponent,
 };

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 import clsx from 'clsx';
@@ -18,12 +17,12 @@ const Component = ({className, children}) => (
   <div className={clsx(className, styles.root)}>
     <AppBar position="static" className={styles.appBar}>
       <Toolbar className={styles.toolBar}>
-        <Button href="https://www.sygns.com/"
+        <Link to="/"
           // onClick={preventDefault}
           className={styles.sygnsHome}
         >
           <img className={styles.logo} src="/images/SygnsLogo.svg" alt="img"/>
-        </Button>
+        </Link>
         <Link to="/"
           // onClick={preventDefault}
           className={styles.shop}

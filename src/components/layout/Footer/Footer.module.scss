@@ -1,0 +1,62 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  background: $color-black;
+  padding: 50px 0;
+
+  .columnFooter {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .columnFooterRight {
+    text-align: right;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .openHours {
+      color: $color-white;
+      font-weight: bold;
+    }
+  }
+
+  .footerLink {
+    text-decoration: none;
+    color: $color-white;
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: $transition;
+
+    &:hover {
+      color: $color-main;
+    }
+  }
+
+  .footerTitle {
+    color: $color-gray;
+  }
+
+  .footerLinkSmall {
+    text-decoration: none;
+    color: $color-white;
+    font-size: $base-size;
+    margin-left: 30px;
+  }
+
+  .rights {
+    font-size: $base-size;
+    color: $color-white;
+  }
+
+  .legal {
+    text-align: right;
+  }
+
+  .line {
+    border-bottom: 1px solid $color-white;
+    margin: 20px 0 40px 0;
+  }
+}

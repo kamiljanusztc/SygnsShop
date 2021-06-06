@@ -2,4 +2,25 @@
 
 .root {
 
+  .card {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    margin: 15px;
+
+    .cardItem {
+      flex-basis: 25%;
+      margin: 15px;
+      flex-grow: 1;
+
+      .cardLink {
+        text-decoration: none;
+
+        .image {
+          height: 200px;
+        }
+      }
+    }
+  }
 }
