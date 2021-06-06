@@ -7,7 +7,6 @@ import clsx from 'clsx';
 // import Paper from '@material-ui/core/Paper';
 // import Grid from '@material-ui/core/Grid';
 
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,7 +16,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-
 
 import { getAll } from '../../../redux/productsRedux';
 import { Carousel } from '../../features/Carousel/Carousel';
@@ -35,8 +33,6 @@ class Component extends React.Component {
 
       <div className={clsx(className, styles.root)}>
         <Carousel className={styles.carousel}/>
-
-
 
         <div className={styles.card}>
           {products.map(product => (
@@ -69,10 +65,7 @@ class Component extends React.Component {
             </Card>
           ))}
         </div>
-
       </div>
-
-
     );
   }
 }

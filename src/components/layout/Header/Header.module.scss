@@ -2,23 +2,53 @@
 
 .root {
 
+  .navBar {
+    position: fixed;
+    background: $color-white;
+    z-index: 999;
+    width: 100%;
+
+    .menu {
+
+    }
+
+    .sygnsHome {
+      background: transparent;
+      display: flex;
+      text-decoration: none;
+
+      .logo {
+        width: 80px;
+        margin: -40px 0;
+      }
+
+      .shop {
+        color: $color-main;
+        font-style: italic;
+        font-size: 12px;
+        padding-top: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+
   .appBar {
     background: white;
 
     .toolBar {
       justify-content: space-between;
 
-      .sygnsHome {
-        background: transparent;
+      .dropdown {
+        background:transparent;
+        border: none;
+        color: $color-black;
+        outline: none;
 
-        .logo {
-          width: 80px;
-          margin: -40px 0;
+        &:focus, &:after, &:hover {
+          outline: none;
+          background: transparent;
+          box-shadow: transparent;
         }
-      }
-
-      .shop {
-        text-decoration: none;
       }
 
       .cart {

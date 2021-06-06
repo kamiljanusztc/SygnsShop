@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
 // import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
@@ -26,10 +27,10 @@ const Component = ({className}) => (
         />
         <Carousel.Caption>
           <h1 className={styles.hotDealTitle}>HEART</h1>
-          <p className={styles.hotDealPrice}>1100€</p>
-          <Button className={styles.btn}>
-            Add to cart
-          </Button>
+          <p className={styles.hotDealPrice}>495€</p>
+          <Link className={styles.btn}>
+            See more
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -41,10 +42,10 @@ const Component = ({className}) => (
 
         <Carousel.Caption>
           <h1 className={styles.hotDealTitle}>BOB</h1>
-          <p className={styles.hotDealPrice}>900€</p>
-          <Button className={styles.btn}>
-            Add to cart
-          </Button>
+          <p className={styles.hotDealPrice}>495€</p>
+          <Link className={styles.btn}>
+            See more
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -56,10 +57,10 @@ const Component = ({className}) => (
 
         <Carousel.Caption>
           <h1 className={styles.hotDealTitle}>BOOM!</h1>
-          <p className={styles.hotDealPrice}>1000€</p>
-          <Button className={styles.btn}>
-            Add to cart
-          </Button>
+          <p className={styles.hotDealPrice}>495€</p>
+          <Link className={styles.btn}>
+            See more
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { Link } from 'react-router-dom';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import {Navbar, Nav} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import clsx from 'clsx';
 
@@ -13,33 +12,40 @@ import clsx from 'clsx';
 
 import styles from './Header.module.scss';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <AppBar position="static" className={styles.appBar}>
-      <Toolbar className={styles.toolBar}>
-        <Link to="/"
-          // onClick={preventDefault}
-          className={styles.sygnsHome}
-        >
-          <img className={styles.logo} src="/images/SygnsLogo.svg" alt="img"/>
-        </Link>
-        <Link to="/"
-          // onClick={preventDefault}
-          className={styles.shop}
-        >
-          SYGNS Shop
-        </Link>
-        <Link
-          href="https://www.sygns.com/cart"
-          className={styles.cart}
-        >
-          <ShoppingCartOutlinedIcon href="https://www.sygns.com/cart"/>
-        </Link>
-      </Toolbar>
-    </AppBar>
-    {children}
-  </div>
-);
+class Component extends React.Component {
+
+  render() {
+    const {className} = this.props;
+
+    return(
+      <div className={clsx(className, styles.root)}>
+
+        <Navbar className={styles.navBar} expand="lg">
+          <Navbar.Brand to="/" className={styles.sygnsHome}>
+            <img className={styles.logo} src="/images/SygnsLogo.svg" alt="img"/>
+            <p className={styles.shop}>Shop</p>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse className={styles.menu} id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <Nav.Link to="/">Neons</Nav.Link>
+              <Nav.Link to="/">LED Neons</Nav.Link>
+              <Nav.Link to="/">2D Letters</Nav.Link>
+              <Nav.Link to="/">3D Letters</Nav.Link>
+              <Nav.Link to="/">Lightboxes</Nav.Link>
+              <Nav.Link to="/">Components</Nav.Link>
+              <Nav.Link to="/">Login</Nav.Link>
+              <Nav.Link to="/">
+                <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} />
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    );
+  }
+}
+
 
 Component.propTypes = {
   children: PropTypes.node,
