@@ -19,6 +19,7 @@ import ShareIcon from '@material-ui/icons/Share';
 
 import { getAll } from '../../../redux/productsRedux';
 import { Carousel } from '../../features/Carousel/Carousel';
+import { Promo } from '../../features/Promo/Promo';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +33,19 @@ class Component extends React.Component {
     return(
 
       <div className={clsx(className, styles.root)}>
-        <Carousel className={styles.carousel}/>
+
+        <div className={styles.dealsWrapper}>
+          <div className={styles.deal}>
+            <Carousel className={styles.carousel}/>
+          </div>
+          <div className={styles.deal}>
+            <Promo className={styles.promo}/>
+          </div>
+        </div>
+
+        <div className={styles.productsBar}>
+          <h4>Products</h4>
+        </div>
 
         <div className={styles.card}>
           {products.map(product => (
