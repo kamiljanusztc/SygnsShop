@@ -5,8 +5,6 @@ import clsx from 'clsx';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
-// import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
@@ -15,7 +13,10 @@ import styles from './Carousel.module.scss';
 
 const Component = ({className}) => (
   <div className={clsx(className, styles.root)}>
-    <h3 className={styles.hotDeals}>HOT DEALS</h3>
+    <div className={styles.hotDealsContent}>
+      <h3 className={styles.hotDealsTitle}>HOT DEALS</h3>
+      <p className={styles.hotDealsText}>The most frequently ordered products</p>
+    </div>
     <Carousel
       // activeIndex={index} onSelect={handleSelect}
     >
@@ -26,8 +27,7 @@ const Component = ({className}) => (
           alt="First slide"
         />
         <Carousel.Caption>
-          <h1 className={styles.hotDealTitle}>HEART</h1>
-          <p className={styles.hotDealPrice}>495€</p>
+          <h3 className={styles.hotDealTitle}>HEART</h3>
           <Link className={styles.btn}>
             See more
           </Link>
@@ -41,8 +41,7 @@ const Component = ({className}) => (
         />
 
         <Carousel.Caption>
-          <h1 className={styles.hotDealTitle}>BOB</h1>
-          <p className={styles.hotDealPrice}>495€</p>
+          <h3 className={styles.hotDealTitle}>BOB</h3>
           <Link className={styles.btn}>
             See more
           </Link>
@@ -56,8 +55,7 @@ const Component = ({className}) => (
         />
 
         <Carousel.Caption>
-          <h1 className={styles.hotDealTitle}>BOOM!</h1>
-          <p className={styles.hotDealPrice}>495€</p>
+          <h3 className={styles.hotDealTitle}>BOOM!</h3>
           <Link className={styles.btn}>
             See more
           </Link>

@@ -3,24 +3,18 @@
 .root {
   background: $color-black;
 
-  .hotDeals {
+  .hotDealsContent {
     color: $color-white;
-    padding: 20px 0;
     text-align: center;
-    margin: 0 auto;
-    margin-top: 40px;
+    padding: 10px 0;
   }
 
   .btn {
     background: $color-main;
     color: $color-white;
-    padding: 10px 15px;
+    padding: 5px 10px;
     margin: 30px 0;
     border-radius: 5px;
-  }
-
-  .hotDealTitle {
-    // font-size: 300px;
   }
 
   .hotDealPrice {

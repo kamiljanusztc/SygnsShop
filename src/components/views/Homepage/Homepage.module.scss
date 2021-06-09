@@ -1,23 +1,17 @@
 @import '../../../styles/settings.scss';
 
 .root {
+  max-width: 1280px;
+  margin: auto;
+  padding: 30px;
 
-  .productsBar {
-
+  .title {
+    text-align: center;
+    margin: 170px 0 110px 0;
   }
 
-  .dealsWrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-basis: 100%;
-    flex-wrap: wrap;
-    margin: 15px;
-
-    .deal {
-      flex-basis: 30%;
-      margin: 15px;
-      flex-grow: 1;
-    }
+  .promote {
+    margin: 50px 15px;
   }
 
   .card {
@@ -25,10 +19,9 @@
     justify-content: space-between;
     flex-basis: 100%;
     flex-wrap: wrap;
-    margin: 15px;
 
     .cardItem {
-      flex-basis: 25%;
+      flex-basis: 20%;
       margin: 15px;
       flex-grow: 1;
 

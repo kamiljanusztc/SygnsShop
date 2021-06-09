@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import {Navbar, Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import clsx from 'clsx';
-
+import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
@@ -26,21 +26,23 @@ class Component extends React.Component {
             <p className={styles.shop}>Shop</p>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className={styles.menu} id="basic-navbar-nav">
-            <Nav className="ml-auto">
-              <Nav.Link to="/">Neons</Nav.Link>
-              <Nav.Link to="/">LED Neons</Nav.Link>
-              <Nav.Link to="/">2D Letters</Nav.Link>
-              <Nav.Link to="/">3D Letters</Nav.Link>
-              <Nav.Link to="/">Lightboxes</Nav.Link>
-              <Nav.Link to="/">Components</Nav.Link>
-              <Nav.Link to="/">Login</Nav.Link>
-              <Nav.Link to="/">
-                <FontAwesomeIcon icon={faShoppingCart} className={styles.icon} />
-              </Nav.Link>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav
+              className="ml-auto"
+            >
+              <Link className={styles.link} to="/">Products</Link>
+              <Link className={styles.link} to="/">
+                <FontAwesomeIcon icon={faUser} className={styles.icon}/>
+                <p>Login</p>
+              </Link>
+              <Link className={styles.link} to="/">
+                <FontAwesomeIcon icon={faShoppingCart} className={styles.icon}/>
+                <p>Cart</p>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+
       </div>
     );
   }

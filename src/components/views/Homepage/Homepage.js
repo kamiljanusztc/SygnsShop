@@ -17,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 
+import { Menu } from '../Menu/Menu';
 import { getAll } from '../../../redux/productsRedux';
 import { Carousel } from '../../features/Carousel/Carousel';
 import { Promo } from '../../features/Promo/Promo';
@@ -34,19 +35,40 @@ class Component extends React.Component {
 
       <div className={clsx(className, styles.root)}>
 
-        <div className={styles.dealsWrapper}>
+        <div className={styles.title}>
+          <h1>Welcome to Sygns store.</h1>
+          <h3>Choose a product or configure your dream sign!</h3>
+        </div>
+
+        {/* <div className={styles.dealsWrapper}>
           <div className={styles.deal}>
             <Carousel className={styles.carousel}/>
           </div>
           <div className={styles.deal}>
             <Promo className={styles.promo}/>
           </div>
-        </div>
+          <div className={styles.deal}>
+            <Promo className={styles.promo}/>
+          </div>
+        </div> */}
 
-        <div className={styles.productsBar}>
-          <h4>Products</h4>
+        <div
+          className={styles.promote}
+        >
+          <div className='row'>
+            <div className='col-md-4'>
+              <div className={styles.dealsWrapper}>
+                <Carousel className={styles.carousel}/>
+              </div>
+            </div>
+            <div className='col-md-8'>
+              <div className={styles.bannerWrapper}>
+                <Promo className={styles.promo}/>
+              </div>
+            </div>
+          </div>
         </div>
-
+        <Menu/>
         <div className={styles.card}>
           {products.map(product => (
             <Card key={product._id} className={styles.cardItem}>
@@ -77,6 +99,19 @@ class Component extends React.Component {
               </Link>
             </Card>
           ))}
+        </div>
+
+        <div>
+          <h4>Learn more</h4>
+          <p>Download our catalogue</p>
+        </div>
+        <div>
+          <h4>Questions</h4>
+          <p>Feel free to ask us</p>
+        </div>
+        <div>
+          <h4>Get free preview</h4>
+          <p>We'll help you with configure your sign</p>
         </div>
       </div>
     );

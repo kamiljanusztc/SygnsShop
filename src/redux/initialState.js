@@ -43,6 +43,20 @@ export const initialState = {
         price: 1200,
         image: 'https://cdn.shopify.com/s/files/1/0613/4865/products/ALL_VOUCHERS_2048px_1024x1024.png?v=1510918574',
       },
+      {
+        id: 7,
+        title: 'BOOM',
+        content: 'The neon writings in this series are specifically made in memory of Roy Lichtenstein, who based his style on an important pillar of mass communication: comics.',
+        price: 495,
+        image: 'https://cdn.shopify.com/s/files/1/0613/4865/products/Sygns-8562_Boom-UPLOAD_1024x1024.jpg?v=1443094718',
+      },
+      {
+        id: 8,
+        title: 'LETTER EDITION',
+        content: 'With our Letter Edition you can throw together your message in neon by ordering separate neon letters.',
+        price: 65,
+        image: 'https://cdn.shopify.com/s/files/1/0613/4865/products/letters-2A-2_1024x1024.jpg?v=1485446001',
+      },
     ],
     loading: {
       active: false,

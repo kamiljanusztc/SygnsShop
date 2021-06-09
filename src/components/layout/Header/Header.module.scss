@@ -2,12 +2,54 @@
 
 .root {
 
+  .menu {
+    text-align: right;
+  }
+
   .navBar {
     position: fixed;
     background: $color-white;
     z-index: 999;
     width: 100%;
     top: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    .link {
+      font-weight: bold;
+      text-decoration: none;
+      background: linear-gradient(to right, $color-main, $color-main 50%, $color-black 50%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 100%;
+      background-position: 100%;
+      transition: background-position 375ms ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: -10px;
+      &:hover {
+        background-position: 0 100%;
+      }
+    }
+
+    .cart {
+      color: $color-black;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+    }
+
+    .icon {
+      margin-top: 4px;
+      margin-right: 5px;
+      color: $color-main;
+    }
+
+    a {
+      padding: 10px 25px;
+    }
 
     .sygnsHome {
       background: transparent;
