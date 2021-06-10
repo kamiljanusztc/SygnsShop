@@ -14,7 +14,7 @@ import styles from './Carousel.module.scss';
 const Component = ({className}) => (
   <div className={clsx(className, styles.root)}>
     <div className={styles.hotDealsContent}>
-      <h3 className={styles.hotDealsTitle}>HOT DEALS</h3>
+      <h4 className={styles.hotDealsTitle}>HOT DEALS</h4>
       <p className={styles.hotDealsText}>The most frequently ordered products</p>
     </div>
     <Carousel

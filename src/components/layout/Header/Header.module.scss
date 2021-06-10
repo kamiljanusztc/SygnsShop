@@ -12,7 +12,7 @@
     z-index: 999;
     width: 100%;
     top: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: $box-shadow;
 
     .link {
       font-weight: bold;

@@ -1,4 +1,25 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 0 30px;
+
+  .container {
+    margin: 100px 0 50px 0;
+
+    .addToCart {
+      text-decoration: none;
+      color: $color-main;
+      border: 2px solid $color-main;
+      padding: 10px;
+      border-radius: 5px;
+      transition: $transition;
+      font-weight: bold;
+
+      &:hover {
+        background: $color-main;
+        color: $color-white;
+      }
+    }
+  }
+
+}

@@ -21,7 +21,7 @@ class Component extends React.Component {
       <div className={clsx(className, styles.root)}>
 
         <Navbar className={styles.navBar} expand="lg">
-          <Navbar.Brand to="/" className={styles.sygnsHome}>
+          <Navbar.Brand href="/" className={styles.sygnsHome}>
             <img className={styles.logo} src="/images/SygnsLogo.svg" alt="img"/>
             <p className={styles.shop}>Shop</p>
           </Navbar.Brand>

@@ -1,12 +1,13 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  background: $color-black;
+  box-shadow: $box-shadow;
+  border-radius: 5px;
 
   .hotDealsContent {
-    color: $color-white;
+    padding-top: 15px;
+    color: $color-black;
     text-align: center;
-    padding: 10px 0;
   }
 
   .btn {
@@ -23,5 +24,10 @@
     padding: 5px;
     width: 80px;
     margin: auto;
+  }
+
+  img {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }

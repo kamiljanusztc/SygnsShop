@@ -1,12 +1,12 @@
 @import '../../../styles/settings.scss';
 
 .root {
-  margin-bottom: 40px;
-  margin-top: 80px;
+  margin-bottom: 15px;
+  margin-top: 50px;
 
   .navBar {
-    background: $color-gray;
-
+    box-shadow: $box-shadow;
+    margin: 0 15px;
 
     .menuWrapper {
       margin: auto;
@@ -22,7 +22,6 @@
         background-size: 200% 100%;
         background-position: 100%;
         transition: background-position 375ms ease;
-        text-decoration: none;
         &:hover {
           background-position: 0 100%;
         }

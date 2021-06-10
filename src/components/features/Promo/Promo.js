@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-import { Link } from 'react-router-dom';
 // import { connect } from 'react-redux';
 // import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
@@ -15,12 +14,10 @@ const Component = ({className}) => (
     <div className={styles.promoWrapper}>
       <div className={styles.promo}>
         <h4>New moss palette available now!</h4>
-        <Link className={styles.cta} to="/">Read more</Link>
+        <p>Contact us for more information</p>
       </div>
-      <img
+      <div
         className={styles.promoImage}
-        src="/images/products/moss.jpg"
-        alt="img"
       />
     </div>
 
