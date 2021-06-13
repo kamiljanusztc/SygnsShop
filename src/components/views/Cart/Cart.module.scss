@@ -1,4 +1,52 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  margin: 0 auto;
+  max-width: 1180px;
+
+  .cartContainer {
+    margin: 150px 40px 80px 40px;
+
+    .navCart {
+      color: $color-gray-text;
+    }
+
+    .cartTitle {
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 30px;
+
+      .cartIcon {
+        color: $color-main;
+        margin: 2px 5px 0 0;
+      }
+    }
+
+    .product {
+      border-bottom: 1px solid $color-gray;
+      padding-bottom: 10px;
+
+      .remove {
+        float: right;
+        cursor: pointer;
+        color: $color-gray-text;
+      }
+    }
+
+    .order {
+      padding: 10px;
+      background: $color-main;
+      color: $color-white;
+      text-decoration: none;
+      border-radius: 5px;
+      float: right;
+      margin-top: 40px;
+    }
+
+    .line {
+      border-bottom: 1px solid $color-gray;
+      margin: 20px 0;
+    }
+  }
+
+}

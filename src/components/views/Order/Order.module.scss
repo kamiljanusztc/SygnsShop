@@ -1,0 +1,23 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: 0 auto;
+  max-width: 1180px;
+
+  .orderContainer {
+    margin: 150px 30px 80px 30px;
+    text-align: center;
+
+    .products {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .line {
+      border-bottom: 1px solid $color-gray;
+      max-width: 1180px;
+      margin: 20px 0;
+    }
+
+}

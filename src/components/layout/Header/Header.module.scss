@@ -41,8 +41,14 @@
       text-decoration: none;
     }
 
-    .icon {
-      margin-top: 4px;
+    .iconCart {
+      margin-right: 5px;
+      margin-top: 2px;
+      color: $color-main;
+      font-size: 22px;
+    }
+
+    .iconLogin {
       margin-right: 5px;
       color: $color-main;
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import uniqid from 'uniqid';
 import clsx from 'clsx';
 // import uniqid from 'uniqid';
 
@@ -70,14 +70,14 @@ class Component extends React.Component {
           <Menu/>
           <div className={styles.card}>
             {products.map(product => (
-              <Card key={product._id} className={styles.cardItem}>
+              <Card key={product._id ? product._id : uniqid()} className={styles.cardItem}>
                 <Link
                   to={`/product/${product._id}`}
                   className={styles.cardLink}>
                   <CardActionArea>
                     <CardMedia
                       className={styles.image}
-                      image={product.image}
+                      image={product.image[0]}
                       component="img"
                     />
                     <CardContent>
@@ -86,6 +86,9 @@ class Component extends React.Component {
                       </Typography>
                       <Typography className={styles.content} variant="body2" color="textSecondary" component="p">
                         {product.content}
+                      </Typography>
+                      <Typography className={styles.price} variant="body2" component="p">
+                        {product.price}€
                       </Typography>
                       <Link className={styles.cta} to="/">See more</Link>
                     </CardContent>

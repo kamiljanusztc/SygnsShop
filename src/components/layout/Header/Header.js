@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {Navbar, Nav} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
@@ -32,11 +32,11 @@ class Component extends React.Component {
             >
               <Link className={styles.link} to="/">Products</Link>
               <Link className={styles.link} to="/">
-                <FontAwesomeIcon icon={faUser} className={styles.icon}/>
+                <PersonOutlineOutlinedIcon className={styles.iconLogin}/>
                 <p>Login</p>
               </Link>
               <Link className={styles.link} to="/">
-                <FontAwesomeIcon icon={faShoppingCart} className={styles.icon}/>
+                <ShoppingCartOutlinedIcon className={styles.iconCart}/>
                 <p>Cart</p>
               </Link>
             </Nav>

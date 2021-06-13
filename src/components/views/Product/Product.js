@@ -4,15 +4,33 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProduct, fetchProduct } from '../../../redux/productsRedux';
+
+import { getOne, fetchOneProductFromAPI, addToCart } from '../../../redux/productsRedux';
 import Carousel from 'react-bootstrap/Carousel';
 import styles from './Product.module.scss';
 
 
 class Component extends React.Component {
 
+  // state = {
+  //   cart: {
+  //     _id: this.props.product._id,
+  //     title: this.props.product.title,
+  //     content: this.props.product.content,
+  //     price: this.props.product.price,
+  //     image: this.props.product.image,
+  //     quantity: 1,
+  //     message: '',
+  //   },
+  // };
+
+  componentDidMount() {
+    const { fetchProduct } = this.props;
+    fetchProduct();
+  }
+
   render() {
-    const {className, productById} = this.props;
+    const {className, product} = this.props;
 
     return (
       <div className={clsx(className, styles.root)}>
@@ -56,7 +74,8 @@ class Component extends React.Component {
             <div className="col-md-6">
               <div>
                 <h4>
-                Product name
+                  {product.title}
+
                 </h4>
                 <p>
                   With our Letter Edition you can throw together your message in neon by ordering separate neon letters
@@ -80,15 +99,19 @@ Component.propTypes = {
   className: PropTypes.string,
   props: PropTypes.object,
   match: PropTypes.object,
-  productById: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  product: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  fetchProduct: PropTypes.func,
+  addToCart: PropTypes.func,
 };
 
 const mapStateToProps = (state, props) => ({
-  productById: getProduct(state),
+  product: getOne(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  fetchOneProduct: () => dispatch(fetchProduct(props.match.params.id)),
+  // fetchOneProduct: () => dispatch(fetchProduct(props.match.params.id)),
+  fetchProduct: () => dispatch(fetchOneProductFromAPI(props.match.params.id)),
+  addToCart: (value) => dispatch(addToCart(value)),
 });
 
 // const mapStateToProps = state => ({

@@ -6,28 +6,54 @@ db.createCollection('posts')
 
 show collections
 
-db.posts.insertMany([{
-  author: 'the.admin@example.com',
-  created: new Date('2019-01-01T12:00:00Z'),
-  updated: new Date('2019-01-01T12:00:00Z'),
-  status: 'published',
-  title: 'Welcome to our bulletin board!',
-  text: 'Email me to register and get an account!',
-  photo: null,
-  price: null,
-  phone: null,
-  location: null
-}, {
-  author: 'user123@example.com',
-  created: new Date('2019-01-05T16:35:17Z'),
-  updated: new Date('2019-01-05T16:35:17Z'),
-  status: 'published',
-  title: 'Room for rent',
-  text: 'I have a spare room for rent. Low price!',
-  photo: null,
-  price: null,
-  phone: null,
-  location: null
+db.products.insertMany([
+{
+  title: 'CLOUD 9',
+  content: 'Cloud 9 is part of the series “Le Petit Prince” that draws graphical and lyrical inspiration from the same titled book by Antoine de Saint-Exupéry.',
+  price: 350,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'BOOM',
+  content: 'The neon writings in this series are specifically made in memory of Roy Lichtenstein, who based his style on an important pillar of mass communication: comics.',
+  price: 495,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'LETTER EDITION',
+  content: 'With our Letter Edition you can throw together your message in neon by ordering separate neon letters.',
+  price: 65,
+  photo: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'COSMIC II',
+  content: 'Cosmic II is part of the series “Le Petit Prince” that draws graphical and lyrical inspiration from the same titled book by Antoine de Saint-Exupéry.',
+  price: 1200,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'ROCK ON!',
+  content: 'Our hands are a homage to the most famous cartoon figure in the world: the Mickey Mouse! With it`s black ears, red pants and white hands, it has three simple characteristics that make it unmistakably.',
+  price: 250,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'VOUCHER',
+  content: 'If you are still looking for a personal and special gift, this is the right place. From now on, you can give away individual neon letters and symbols with our sygns gift voucher, without having to decide in advance.',
+  price: 1200,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'BOOM',
+  content: 'The neon writings in this series are specifically made in memory of Roy Lichtenstein, who based his style on an important pillar of mass communication: comics.',
+  price: 495,
+  image: '/images/products/neon-cloud-2.jpg',
+},
+{
+  title: 'LETTER EDITION',
+  content: 'With our Letter Edition you can throw together your message in neon by ordering separate neon letters.',
+  price: 65,
+  image: '/images/products/neon-cloud-2.jpg',
 }])
 
-db.posts.find().pretty()
+db.products.find().pretty()
