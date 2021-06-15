@@ -5,19 +5,45 @@
   max-width: 1180px;
 
   .orderContainer {
-    margin: 150px 30px 80px 30px;
+    margin: 150px 30px 120px 30px;
     text-align: center;
 
-    .products {
-      display: flex;
-      flex-direction: row;
+    .orderBox {
+      box-shadow: $box-shadow;
+      border-radius: 5px;
+      padding: 30px 20px 0 20px;
+      margin: 40px 0 0 0;
+
+      .products {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        text-align: center;
+
+        .type {
+          padding-right: 50px;
+          text-align: right;
+          color: $color-gray-text;
+        }
+
+        .content {
+          text-align: left;
+        }
+      }
+
+      .form {
+        padding: 20px 20px 40px 20px;
+      }
     }
   }
 
-  .line {
-      border-bottom: 1px solid $color-gray;
-      max-width: 1180px;
-      margin: 20px 0;
-    }
-
+  .confirmOrder {
+    padding: 10px;
+    background: $color-main;
+    color: $color-white;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 40px;
+  }
 }

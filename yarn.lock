@@ -1706,6 +1706,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/google.fonts@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/google.fonts/-/google.fonts-1.0.2.tgz#c9461afe3638877a372546c327f442f5d9351f60"
+  integrity sha512-V1bkKifXl7wN8Jrmsyh+nALf311P0jFUGVZ4tEGqSdwpIx9o2E6u4mJyeSpNC/e/7spH0GzMhElIcQWBQC0HRg==
+
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -5713,6 +5718,13 @@ globule@^1.0.0:
     glob "~7.1.1"
     lodash "~4.17.10"
     minimatch "~3.0.2"
+
+google-fonts-complete@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/google-fonts-complete/-/google-fonts-complete-2.1.1.tgz#07ff198f821e16ea68f99a7c058f5ed3ad94f86c"
+  integrity sha512-6e7jXyadmW4iHrrmYitcsoyVpcymjndBsgXLeo0XXXbAqU9xhM06OxxJAiPqSrp9Xn2bvBueOTe091lwkKVc1g==
+  dependencies:
+    postcss "^7.0.18"
 
 got@^6.7.1:
   version "6.7.1"
@@ -9855,6 +9867,15 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2
   version "7.0.35"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.35.tgz#d2be00b998f7f211d8a276974079f2e92b970e24"
   integrity sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg==
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
+
+postcss@^7.0.18:
+  version "7.0.36"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
+  integrity sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw==
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"

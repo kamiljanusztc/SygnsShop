@@ -9,6 +9,8 @@
 
     .navCart {
       color: $color-gray-text;
+      margin-left: 20px;
+      padding-bottom: 15px;
     }
 
     .cartTitle {
@@ -23,8 +25,8 @@
     }
 
     .product {
-      border-bottom: 1px solid $color-gray;
-      padding-bottom: 10px;
+      box-shadow: $box-shadow;
+      padding: 20px 20px 10px 20px;
 
       .remove {
         float: right;
@@ -41,11 +43,6 @@
       border-radius: 5px;
       float: right;
       margin-top: 40px;
-    }
-
-    .line {
-      border-bottom: 1px solid $color-gray;
-      margin: 20px 0;
     }
   }
 

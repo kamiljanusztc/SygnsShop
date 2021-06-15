@@ -14,15 +14,25 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 
 import { Menu } from '../Menu/Menu';
-import { getAll } from '../../../redux/productsRedux';
 import { Carousel } from '../../features/Carousel/Carousel';
 import { Promo } from '../../features/Promo/Promo';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import {
+  getAll,
+  fetchProductsFromAPI,
+  getLoadingState,
+} from '../../../redux/productsRedux.js';
+
 import styles from './Homepage.module.scss';
 
 class Component extends React.Component {
+
+  componentDidMount() {
+    const { fetchProducts } = this.props;
+    fetchProducts();
+  }
 
   render() {
     const {className, products} = this.props;
@@ -70,9 +80,9 @@ class Component extends React.Component {
           <Menu/>
           <div className={styles.card}>
             {products.map(product => (
-              <Card key={product._id ? product._id : uniqid()} className={styles.cardItem}>
+              <Card key={product.id ? product.id : uniqid()} className={styles.cardItem}>
                 <Link
-                  to={`/product/${product._id}`}
+                  to={{ pathname:`/product/${product.id}`}}
                   className={styles.cardLink}>
                   <CardActionArea>
                     <CardMedia
@@ -107,16 +117,17 @@ class Component extends React.Component {
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  // products: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      content: PropTypes.string,
-      price: PropTypes.number,
-      image: PropTypes.string,
-    })
-  ),
+  products: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  // products: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number,
+  //     title: PropTypes.string,
+  //     content: PropTypes.string,
+  //     price: PropTypes.number,
+  //     image: PropTypes.string,
+  //   })
+  // ),
+  fetchProducts: PropTypes.func,
 };
 
 // const mapStateToProps = state => ({
@@ -127,16 +138,21 @@ Component.propTypes = {
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   products: getAll(state),
+  loading: getLoadingState(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(fetchProductsFromAPI()),
 });
 
 // const mapDispatchToProps = dispatch => ({
 //   fetchPublishedPosts: () => dispatch(fetchPublished()),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+// const Container = connect(mapStateToProps)(Component);
 
 export {
   // Component as Homepage,

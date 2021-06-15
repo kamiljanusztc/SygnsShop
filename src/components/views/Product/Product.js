@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getOne, fetchOneProductFromAPI, addToCart } from '../../../redux/productsRedux';
+import { getOne, fetchOneProductFromAPI, addToCart, getLoadingState } from '../../../redux/productsRedux';
 import Carousel from 'react-bootstrap/Carousel';
 import styles from './Product.module.scss';
 
@@ -31,6 +31,7 @@ class Component extends React.Component {
 
   render() {
     const {className, product} = this.props;
+    console.log('product', product);
 
     return (
       <div className={clsx(className, styles.root)}>
@@ -67,6 +68,7 @@ class Component extends React.Component {
                       src="/images/products/hot-deal.jpg"
                       alt="First slide"
                     />
+                    {/* {product.image} */}
                   </Carousel.Item>
                 </Carousel>
               </div>
@@ -74,16 +76,18 @@ class Component extends React.Component {
             <div className="col-md-6">
               <div>
                 <h4>
-                  {product.title}
+                  {/* {product.title} */}
 
                 </h4>
                 <p>
                   With our Letter Edition you can throw together your message in neon by ordering separate neon letters
+                  {/* {product.content} */}
                 </p>
-                Quantity:
+                {/* Quantity: {product.qunatity} */}
                 <input type="number" id="quantity" name="quantity" min="1" max="5"/>
                 <p>
                 € Price
+                  {/* {product.price} */}
                 </p>
               </div>
               <Link className={styles.addToCart} to="/">Add to cart</Link>
@@ -97,15 +101,17 @@ class Component extends React.Component {
 
 Component.propTypes = {
   className: PropTypes.string,
+  product: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   props: PropTypes.object,
   match: PropTypes.object,
-  product: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   fetchProduct: PropTypes.func,
   addToCart: PropTypes.func,
+  loading: PropTypes.object,
 };
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = (state) => ({
   product: getOne(state),
+  loading: getLoadingState(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

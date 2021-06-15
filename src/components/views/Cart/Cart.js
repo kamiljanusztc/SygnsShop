@@ -34,7 +34,6 @@ const Component = ({className}) => (
           </div>
         </div>
       </div>
-      <div className={styles.line}></div>
       <div className={styles.product}>
         <div className="row">
           <div className="col-md-2">

@@ -3,6 +3,7 @@ import Axios from 'axios';
 /* selectors */
 export const getAll = ({products}) => products.data;
 export const getOne = ({products}) => products.oneProduct;
+
 // export const getProductById = ({ products }, _id) => {
 //   return products.data.filter((product) => product._id === _id)[0];
 // };
@@ -10,7 +11,7 @@ export const getOne = ({products}) => products.oneProduct;
 export const getOneProduct = ({products}, id) => {
   products.data.filter(product => product._id === id);
 };
-
+export const getLoadingState = ({ products }) => products.loading;
 
 /* action name creator */
 const reducerName = 'products';
@@ -74,16 +75,33 @@ export const fetchProductsFromAPI = () => {
   };
 };
 
-export const fetchOneProductFromAPI = (id) => {
+// export const fetchOneProductFromAPI = (id) => {
+//   return (dispatch, getState) => {
+//     console.log('getState', getState());
+//     dispatch(fetchStarted());
+//     Axios.get(`http://localhost:8000/api/products/${id}`)
+//       .then((res) => {
+//         console.log(res);
+//         dispatch(fetchOneProduct(res.data));
+//       })
+//       .catch((err) => {
+//         dispatch(fetchError(err.message || true));
+//       });
+//   };
+// };
+
+export const fetchOneProductFromAPI = (_id) => {
   return (dispatch, getState) => {
+    console.log('getState', getState());
     dispatch(fetchStarted());
-    Axios.get(`http://localhost:8000/api/products/${id}`)
+    Axios.get(`http://localhost:8000/api/product/${_id}`)
       .then((res) => {
         console.log(res);
         dispatch(fetchOneProduct(res.data));
       })
       .catch((err) => {
         dispatch(fetchError(err.message || true));
+        console.error(err);
       });
   };
 };
