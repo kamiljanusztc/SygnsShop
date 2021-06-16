@@ -28,9 +28,6 @@ const Component = ({className}) => (
         />
         <Carousel.Caption>
           <h3 className={styles.hotDealTitle}>HEART</h3>
-          <Link className={styles.btn}>
-            See more
-          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -42,9 +39,6 @@ const Component = ({className}) => (
 
         <Carousel.Caption>
           <h3 className={styles.hotDealTitle}>BOB</h3>
-          <Link className={styles.btn}>
-            See more
-          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -53,12 +47,8 @@ const Component = ({className}) => (
           src="/images/products/hot-deal-2.jpg"
           alt="Third slide"
         />
-
         <Carousel.Caption>
           <h3 className={styles.hotDealTitle}>BOOM!</h3>
-          <Link className={styles.btn}>
-            See more
-          </Link>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

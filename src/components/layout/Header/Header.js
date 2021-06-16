@@ -31,11 +31,13 @@ class Component extends React.Component {
               className="ml-auto"
             >
               <Link className={styles.link} to="/">Products</Link>
-              <Link className={styles.link} to="/">
+              <Link className={styles.link}
+
+              >
                 <PersonOutlineOutlinedIcon className={styles.iconLogin}/>
                 <p>Login</p>
               </Link>
-              <Link className={styles.link} to="/">
+              <Link className={styles.link} to="/cart">
                 <ShoppingCartOutlinedIcon className={styles.iconCart}/>
                 <p>Cart</p>
               </Link>

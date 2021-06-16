@@ -57,7 +57,7 @@ const Component = ({className}) => (
           </div>
         </div>
       </div>
-      <Link className={styles.confirmOrder} to="/">Confirm</Link>
+      <Link className={styles.confirmOrder} to="/success">Confirm</Link>
     </div>
   </div>
 );

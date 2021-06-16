@@ -4,13 +4,17 @@
   margin: 0 30px;
 
   .container {
-    margin: 100px 0 50px 0;
+    margin: 150px 0 80px 0;
+
+    .cardItem {
+      margin: 20px 0 30px 0;
+    }
 
     .addToCart {
       text-decoration: none;
       color: $color-main;
       border: 2px solid $color-main;
-      padding: 10px;
+      padding: 8px 15px;
       border-radius: 5px;
       transition: $transition;
       font-weight: bold;

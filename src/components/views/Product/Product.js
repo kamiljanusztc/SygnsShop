@@ -12,17 +12,26 @@ import styles from './Product.module.scss';
 
 class Component extends React.Component {
 
-  // state = {
-  //   cart: {
-  //     _id: this.props.product._id,
-  //     title: this.props.product.title,
-  //     content: this.props.product.content,
-  //     price: this.props.product.price,
-  //     image: this.props.product.image,
-  //     quantity: 1,
-  //     message: '',
-  //   },
-  // };
+  state = {
+    // cart: {
+    //   _id: this.props.product._id,
+    //   title: this.props.product.title,
+    //   content: this.props.product.content,
+    //   price: this.props.product.price,
+    //   image: this.props.product.image,
+    //   quantity: 1,
+    //   message: '',
+    // },
+    // product: {
+    //   _id: this.props.product._id,
+    //   title: this.props.product.title,
+    //   content: this.props.product.content,
+    //   price: this.props.product.price,
+    //   image: this.props.product.image,
+    //   quantity: 1,
+    //   message: '',
+    // },
+  };
 
   componentDidMount() {
     const { fetchProduct } = this.props;
@@ -42,13 +51,6 @@ class Component extends React.Component {
                 <Carousel
                   // activeIndex={index} onSelect={handleSelect}
                 >
-                  <Carousel.Item>
-                    <img
-                      className="d-block w-100"
-                      src="/images/products/hot-deal.jpg"
-                      alt="First slide"
-                    />
-                  </Carousel.Item>
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
@@ -85,12 +87,12 @@ class Component extends React.Component {
                 </p>
                 {/* Quantity: {product.qunatity} */}
                 <input type="number" id="quantity" name="quantity" min="1" max="5"/>
-                <p>
+                <p className={styles.cardItem}>
                 € Price
                   {/* {product.price} */}
                 </p>
               </div>
-              <Link className={styles.addToCart} to="/">Add to cart</Link>
+              <Link className={styles.addToCart} to="/cart">Add to cart</Link>
             </div>
           </div>
         </div>

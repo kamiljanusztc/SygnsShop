@@ -39,11 +39,20 @@
 
   .confirmOrder {
     padding: 10px;
-    background: $color-main;
-    color: $color-white;
+    color: $color-main;
+    border: 2px solid $color-main;
     text-decoration: none;
     border-radius: 5px;
     float: right;
     margin-top: 40px;
+    bottom: 0;
+    padding: 8px 15px;
+    font-weight: bold;
+    transition: $transition;
+
+    &:hover {
+      background: $color-main;
+      color: $color-white;
+    }
   }
 }

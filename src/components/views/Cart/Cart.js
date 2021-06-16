@@ -64,6 +64,9 @@ const Component = ({className}) => (
       </div>
       <div className="row">
         <div className="col-md-12">
+          <p className={styles.totalPrice}>Total price:
+          999 €
+          </p>
           <Link className={styles.order} to="/order">Order</Link>
         </div>
       </div>
