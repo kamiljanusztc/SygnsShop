@@ -5,9 +5,6 @@ import clsx from 'clsx';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 
 import styles from './Carousel.module.scss';
 
@@ -18,7 +15,6 @@ const Component = ({className}) => (
       <p className={styles.hotDealsText}>The most frequently ordered products</p>
     </div>
     <Carousel
-      // activeIndex={index} onSelect={handleSelect}
     >
       <Carousel.Item>
         <img
@@ -36,7 +32,6 @@ const Component = ({className}) => (
           src="/images/products/hot-deal-1.jpg"
           alt="Second slide"
         />
-
         <Carousel.Caption>
           <h3 className={styles.hotDealTitle}>BOB</h3>
         </Carousel.Caption>
@@ -59,20 +54,8 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as Carousel,
   // Container as Carousel,
   Component as CarouselComponent,
 };
-
-

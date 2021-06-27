@@ -2,11 +2,16 @@ import Axios from 'axios';
 
 /* selectors */
 export const getAll = ({products}) => products.data;
-export const getOne = ({products}) => products.oneProduct;
 
-// export const getProductById = ({ products }, _id) => {
-//   return products.data.filter((product) => product._id === _id)[0];
-// };
+export const getOne = ({ products }, _id) => {
+  console.log(_id);
+  console.log(products);
+  // eslint-disable-next-line eqeqeq
+  return products.data.filter((product) => product.id == _id)[0];
+};
+
+export const getFromCart = ({ products }) => products.cart;
+export const addToTheCart = ({ cart }) => cart;
 
 export const getOneProduct = ({products}, id) => {
   products.data.filter(product => product._id === id);
@@ -21,11 +26,13 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const FETCH_START = createActionName('FETCH_START');
 const FETCH_SUCCESS = createActionName('FETCH_SUCCESS');
 const FETCH_ERROR = createActionName('FETCH_ERROR');
-
 const ADD_TO_CART = createActionName('ADD_TO_CART');
-const EDIT_IN_CART = createActionName('EDIT_IN_CART');
-// const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 const FETCH_ONE_PRODUCT = createActionName('FETCH_ONE_PRODUCT');
+
+export const CREATE_ORDER = 'CREATE_ORDER';
+export const CLEAR_ORDER = 'CLEAR_ORDER';
+export const CLEAR_CART = 'CLEAR_CART';
+export const FETCH_ORDERS = 'FETCH_ORDERS';
 
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS');
 
@@ -34,36 +41,45 @@ export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 export const fetchOneProduct = payload => ({ payload, type: FETCH_ONE_PRODUCT });
-export const addToCart = (payload) => ({ payload, type: ADD_TO_CART });
-export const editInCart = (payload) => ({ payload, type: EDIT_IN_CART });
+
+export const addToCart = payload => ({ payload, type: ADD_TO_CART });
+
+export const createOrder = (order) => (dispatch) => {
+  fetch('/api/orders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(order),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({ type: CREATE_ORDER, payload: data });
+      localStorage.clear('cartItems');
+      dispatch({ type: CLEAR_CART });
+    });
+};
+export const clearOrder = () => (dispatch) => {
+  dispatch({ type: CLEAR_ORDER });
+};
+export const fetchOrders = () => (dispatch) => {
+  fetch('/api/orders')
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({ type: FETCH_ORDERS, payload: data });
+    });
+};
 
 export const loadProducts = payload => ({ payload, type: LOAD_PRODUCTS });
 
 /* thunk creators */
-
-// export const fetchProduct = (id) => {
-//   return (dispatch, getState) => {
-//     dispatch(fetchStarted());
-//     console.log('getState', getState());
-
-//     Axios
-//       .get(`http://localhost:8000/api/products/{id}`)
-//       .then(res => {
-//         console.log(res);
-//         dispatch(fetchOneProduct(res.data));
-//       })
-//       .catch(err => {
-//         dispatch(fetchError(err.message || true));
-//       });
-//   };
-// };
 
 export const fetchProductsFromAPI = () => {
   return (dispatch, getState) => {
     const { products } = getState();
 
     if (products.data.length === 0 || products.loading.active === 'false') {
-      dispatch(fetchStarted());
+
       Axios.get('http://localhost:8000/api/products')
         .then((res) => {
           dispatch(fetchSuccess(res.data));
@@ -74,21 +90,6 @@ export const fetchProductsFromAPI = () => {
     }
   };
 };
-
-// export const fetchOneProductFromAPI = (id) => {
-//   return (dispatch, getState) => {
-//     console.log('getState', getState());
-//     dispatch(fetchStarted());
-//     Axios.get(`http://localhost:8000/api/products/${id}`)
-//       .then((res) => {
-//         console.log(res);
-//         dispatch(fetchOneProduct(res.data));
-//       })
-//       .catch((err) => {
-//         dispatch(fetchError(err.message || true));
-//       });
-//   };
-// };
 
 export const fetchOneProductFromAPI = (_id) => {
   return (dispatch, getState) => {
@@ -104,6 +105,22 @@ export const fetchOneProductFromAPI = (_id) => {
         console.error(err);
       });
   };
+};
+
+export const addItem = (item) => {
+  return (dispatch, getState) => {
+    console.log(item);
+    dispatch(addToCart(item));
+  };
+};
+
+export const AddToCart =(id)=>dispatch=>{
+
+  dispatch({
+    type:ADD_TO_CART,
+    payload:id,
+  });
+
 };
 
 /* reducer */
@@ -145,6 +162,17 @@ export const reducer = (statePart = [], action = {}) => {
           error: false,
         },
         oneProduct: action.payload,
+      };
+    }
+    case ADD_TO_CART: {
+      return {
+        ...statePart,
+        loading: {
+          active: false,
+          error: false,
+          confirmation: false,
+        },
+        cart: [...statePart.cart, action.payload],
       };
     }
     default:

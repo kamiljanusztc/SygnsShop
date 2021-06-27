@@ -11,6 +11,7 @@ export const initialState = {
           '/images/products/neon-cloud-1.jpg',
           '/images/products/neon-cloud-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 2,
@@ -22,6 +23,7 @@ export const initialState = {
           '/images/products/boom-1.jpg',
           '/images/products/boom-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 3,
@@ -33,6 +35,7 @@ export const initialState = {
           '/images/products/letter-edition-1.jpg',
           '/images/products/letter-edition-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 4,
@@ -44,6 +47,7 @@ export const initialState = {
           '/images/products/cosmic-1.jpg',
           '/images/products/cosmic-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 5,
@@ -55,6 +59,7 @@ export const initialState = {
           '/images/products/rock-on-1.jpg',
           '/images/products/rock-on-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 6,
@@ -66,6 +71,7 @@ export const initialState = {
           '/images/products/voucher-1.jpg',
           '/images/products/voucher-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 7,
@@ -77,6 +83,7 @@ export const initialState = {
           '/images/products/converter-1.jpg',
           '/images/products/converter-2.jpg',
         ],
+        quantity: 1,
       },
       {
         id: 8,
@@ -88,6 +95,7 @@ export const initialState = {
           '/images/products/flamingo-1.jpg',
           '/images/products/flamingo-2.jpg',
         ],
+        quantity: 1,
       },
     ],
     loading: {

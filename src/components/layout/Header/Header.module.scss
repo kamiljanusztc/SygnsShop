@@ -1,7 +1,6 @@
 @import '../../../styles/settings.scss';
 
 .root {
-
   .menu {
     text-align: right;
   }
@@ -76,28 +75,18 @@
       }
     }
   }
+}
 
-  .appBar {
-    background: white;
-
-    .toolBar {
-      justify-content: space-between;
-
-      .dropdown {
-        background:transparent;
-        border: none;
-        color: $color-black;
-        outline: none;
-
-        &:focus, &:after, &:hover {
-          outline: none;
-          background: transparent;
-          box-shadow: transparent;
-        }
+@media (max-width: 768px) {
+  .root {
+    .iconCart, .iconLogin {
+      display: none;
+    }
+    .link {
+      p{
+      &:first-child {
+        margin-bottom: 15px;
       }
-
-      .cart {
-        color: #F945EC;
       }
     }
   }

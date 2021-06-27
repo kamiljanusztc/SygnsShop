@@ -1,7 +1,6 @@
 @import '../../../styles/settings.scss';
 
 .root {
-
   .banner {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/images/products/moss-jungle.png');
     height: 400px;
@@ -23,6 +22,12 @@
     .title {
       text-align: center;
       color: $color-white;
+
+      h1 {
+        padding-bottom: 20px;
+        text-shadow: 0 0 1px $color-white, 0 0 1px $color-white, 0 0 2px $color-white, 0 0 2px $color-white, 0 0 7px $color-white, 0 0 15px $color-white, 0 0 20px $color-white;
+        letter-spacing: 2px;
+      }
 
       .configure {
         text-decoration: none;
@@ -52,15 +57,29 @@
     max-width: 1180px;
     padding: 30px;
 
-    .promote {
-      margin: 20px 15px;
+    .products {
+      text-align: center;
+      margin: 60px 0 50px 0;
+      font-weight: bold;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 70px;
+        height: 3px;
+        background: $color-main;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
     }
 
-    .card {
-      display: flex;
-      justify-content: space-between;
-      flex-basis: 100%;
-      flex-wrap: wrap;
+    .cardContainer {
+      .card {
+        padding: 0;
+      }
 
       .cardItem {
         flex-basis: 20%;
@@ -83,6 +102,7 @@
           .cta {
             text-decoration: none;
             color: $color-main;
+            padding-top: 10px;
           }
 
           .image {
@@ -99,5 +119,45 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    .banner {
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/images/products/moss-jungle.png');
+      background-position-x: 40%;
+      background-position-y: 65%;
+      background-size: 140%;
+      height: 400px;
+
+      &:hover {
+        display: none;
+      }
+
+      .title {
+        max-width: 300px;
+
+        h1 {
+          font-size: 60px;
+          padding-top: 20px;
+        }
+        h3 {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .title {
+    h1 {
+      font-size: 10px;
+    }
+  }
+
+  .section {
+    margin-top: 20px;
   }
 }

@@ -1,8 +1,11 @@
+/* eslint-disable quotes */
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const socket = require('socket.io');
+// const socket = require('socket.io');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 const productsRoutes = require('./routes/products.routes');
 
@@ -28,47 +31,26 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-// mongoose.connect('mongodb://localhost:27017/sygnsShop', { useNewUrlParser: true, useUnifiedTopology: true });
-// const db = mongoose.connection;
-// db.once('open', () => {
-//   console.log('Successfully connected to the database');
-// });
-// db.on('error', err => console.log('Error: ' + err));
-
-const determineDbUri = (envType) => {
-  switch (envType) {
-    case 'production':
-      return 'mongodb+srv://${process.env.SygnsShop}:${process.env.SygnsShop}@cluster0.uwrti.mongodb.net/SygnsShop?retryWrites=true&w=majority';
-    case 'test':
-      return 'mongodb://localhost:27017/NewWaveDB';
-    default:
-      return 'mongodb://localhost:27017/NewWaveDB';
-  }
-};
-
-mongoose.connect(determineDbUri(process.env.NODE_ENV), {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGO_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
 const db = mongoose.connection;
-
-db.once('open', () => {
-  console.log('Connected to the database');
+db.once("open", () => {
+  console.log("Successfully connected to the database");
 });
-db.on('error', err => console.log('Error ' + err));
+db.on("error", (err) => console.log("Error: " + err));
 
-const server = app.listen(process.env.PORT || 8000, () => {
-  console.log('Server is running on port: 8000');
-});
-
-const io = socket(server);
-
-io.on('connection', (socket) => {
-  console.log('New socket!');
-});
+app.use(session({
+  secret: 'appSuperSecretSession10',
+  store: new MongoStore({ mongooseConnection: db }),
+}));
 
 /* START SERVER */
-// const port = process.env.PORT || 8000;
-// app.listen(port, () => {
-//   console.log('Server is running on port: '+port);
-// });
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log("Server is running on port: " + port);
+});

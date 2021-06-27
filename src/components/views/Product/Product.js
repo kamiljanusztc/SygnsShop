@@ -2,104 +2,130 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
+
+import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import { getOne, fetchOneProductFromAPI, addToCart, getLoadingState } from '../../../redux/productsRedux';
+import { getOne, fetchOneProductFromAPI, getLoadingState } from '../../../redux/productsRedux';
+import { addToCart } from '../../../redux/cartRedux';
 import Carousel from 'react-bootstrap/Carousel';
 import styles from './Product.module.scss';
-
 
 class Component extends React.Component {
 
   state = {
-    // cart: {
-    //   _id: this.props.product._id,
-    //   title: this.props.product.title,
-    //   content: this.props.product.content,
-    //   price: this.props.product.price,
-    //   image: this.props.product.image,
-    //   quantity: 1,
-    //   message: '',
-    // },
-    // product: {
-    //   _id: this.props.product._id,
-    //   title: this.props.product.title,
-    //   content: this.props.product.content,
-    //   price: this.props.product.price,
-    //   image: this.props.product.image,
-    //   quantity: 1,
-    //   message: '',
-    // },
+    quantity: 1,
+    cart: {
+      _id: this.props.product._id,
+      title: this.props.product.title,
+      content: this.props.product.content,
+      price: this.props.product.price,
+      image: this.props.product.image[0],
+      qty: 1,
+      message: '',
+    },
+    product: {
+      _id: this.props.product._id,
+      title: this.props.product.title,
+      content: this.props.product.content,
+      price: this.props.product.price,
+      image: this.props.product.image,
+      quantity: 1,
+      message: '',
+    },
+  };
+
+  placeInCart = (event) => {
+    const { cart } = this.state;
+    const { addToCart } = this.props;
+
+    addToCart(cart);
   };
 
   componentDidMount() {
     const { fetchProduct } = this.props;
+    console.log(this.props.match.params.id);
     fetchProduct();
   }
 
   render() {
-    const {className, product} = this.props;
+
+    const {className, product } = this.props;
     console.log('product', product);
 
     return (
       <div className={clsx(className, styles.root)}>
         <div className={styles.container}>
-          <div className="row">
-            <div className="col-md-6">
+          <Row>
+            <Col xs={12} sm={12} md={6} lg={6}>
               <div>
                 <Carousel
-                  // activeIndex={index} onSelect={handleSelect}
                 >
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src="/images/products/hot-deal.jpg"
-                      alt="First slide"
+                      src={product.image[0]}
+                      alt={product.title}
                     />
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src="/images/products/hot-deal.jpg"
-                      alt="First slide"
+                      src={product.image[1]}
+                      alt={product.title}
                     />
                   </Carousel.Item><Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src="/images/products/hot-deal.jpg"
-                      alt="First slide"
+                      src={product.image[2]}
+                      alt={product.title}
                     />
-                    {/* {product.image} */}
                   </Carousel.Item>
                 </Carousel>
               </div>
-            </div>
-            <div className="col-md-6">
-              <div>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6}>
+              <div className={styles.productDescription}>
                 <h4>
-                  {/* {product.title} */}
-
+                  {product.title}
                 </h4>
                 <p>
-                  With our Letter Edition you can throw together your message in neon by ordering separate neon letters
-                  {/* {product.content} */}
+                  {product.content}
                 </p>
-                {/* Quantity: {product.qunatity} */}
-                <input type="number" id="quantity" name="quantity" min="1" max="5"/>
+                Quantity:
+                <input value={this.state.quantity} onChange={(env)=>this.setState({quantity: env.target.value})} className={styles.qty} type="number" id="quantity" name="quantity" min="1" max="5"/>
                 <p className={styles.cardItem}>
-                € Price
-                  {/* {product.price} */}
+                  {product.price} €
                 </p>
               </div>
-              <Link className={styles.addToCart} to="/cart">Add to cart</Link>
-            </div>
-          </div>
+              <Link className={styles.addToCart}
+                onClick={()=>addToTheCart(product, this.state.quantity)}
+                to='/cart'
+              >Add to cart</Link>
+            </Col>
+          </Row>
         </div>
       </div>
     );
   }
 }
+
+// const updateInputValue = (evt) =>{
+//   this.setState({
+//     quantity: evt.target.value
+//   });
+// };
+
+
+const addToTheCart = (product, quantity) =>{
+  product.quantity = quantity;
+  let localStorageData = localStorage.getItem('cart');
+  let cart = JSON.parse(localStorageData);
+  cart.push(product);
+  console.log('cart', cart);
+  console.log('localStorageData', localStorageData);
+  localStorage.setItem('cart', JSON.stringify(cart));
+};
 
 Component.propTypes = {
   className: PropTypes.string,
@@ -111,31 +137,19 @@ Component.propTypes = {
   loading: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  product: getOne(state),
+const mapStateToProps = (state, props) => ({
+  product: getOne(state, props.match.params.id),
   loading: getLoadingState(state),
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-  // fetchOneProduct: () => dispatch(fetchProduct(props.match.params.id)),
   fetchProduct: () => dispatch(fetchOneProductFromAPI(props.match.params.id)),
-  addToCart: (value) => dispatch(addToCart(value)),
+  addToCart: (value, qty) => dispatch(addToCart(value, qty)),
 });
-
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  // Component as Product,
   Container as Product,
   Component as ProductComponent,
 };

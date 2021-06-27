@@ -62,3 +62,18 @@
     margin: 20px 0 40px 0;
   }
 }
+
+@media (max-width: 768px) {
+  .root {
+    .columnFooter, .columnFooterRight, .rights {
+      text-align: center;
+    }
+
+    .footerLinkSmall {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding-top: 5px;
+    }
+  }
+}

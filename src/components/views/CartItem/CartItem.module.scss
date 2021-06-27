@@ -5,7 +5,7 @@
   max-width: 1180px;
 
   .cartContainer {
-    margin: 150px 40px 80px 40px;
+    // margin: 100px 40px 80px 40px;
 
     .totalPrice {
       text-align: right;
@@ -20,7 +20,7 @@
 
     .cartTitle {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       padding-bottom: 30px;
 
       .cartIcon {
@@ -32,11 +32,23 @@
     .product {
       box-shadow: $box-shadow;
       padding: 20px 20px 10px 20px;
+      margin-bottom: 20px;
 
       .remove {
         float: right;
         cursor: pointer;
         color: $color-gray-text;
+      }
+
+      .qty {
+        margin-left: 10px;
+        border: 1px solid $color-gray;
+        padding-left: 10px;
+      }
+
+      .message {
+        border: 1px solid $color-gray;
+        padding-left: 10px;
       }
     }
 
@@ -55,7 +67,19 @@
         background: $color-main;
         color: $color-white;
       }
-
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    .qtyWrapper {
+      margin-bottom: 15px;
+    }
+
+   .remove {
+     margin-top: 20px;
+     float: left;
+   }
   }
 }
