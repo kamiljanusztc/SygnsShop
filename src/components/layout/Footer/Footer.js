@@ -38,10 +38,10 @@ const Component = ({className, children}) => (
         </Row>
         <div className={styles.line}></div>
         <Row>
-          <Col className={styles.rights} xs={12} sm={12} md="8">
+          <Col className={styles.rights} xs={12} sm={12} md={6}>
             Sygns GmbH, All rights reserved.
           </Col>
-          <Col className={styles.legal} xs={12} sm={12} md={12}>
+          <Col className={styles.legal} xs={12} sm={12} md={6}>
             <Link to="/" className={styles.footerLinkSmall}>Terms & Conditions</Link>
             <Link to="/" className={styles.footerLinkSmall}>Privacy</Link>
             <Link to="/" className={styles.footerLinkSmall}>Imprint</Link>
