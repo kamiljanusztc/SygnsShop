@@ -81,11 +81,10 @@
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "reveal": "^0.0.4",
-    "uniqid": "^5.3.0"
+    "uniqid": "^5.3.0",
+    "lint-staged": "^9.4.3"
   },
   "devDependencies": {
-    "husky": "^3.1.0",
-    "lint-staged": "^9.4.3",
-    "redux-devtools-extension": "^2.13.8"
+    "husky": "^3.1.0"
   }
 }
