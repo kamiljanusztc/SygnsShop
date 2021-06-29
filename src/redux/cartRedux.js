@@ -12,8 +12,6 @@ export const deleteItem = (id) => (dispatch) => {
     type: DELETE_ITEM,
     payload: id,
   });
-
-  // localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems));
 };
 
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';

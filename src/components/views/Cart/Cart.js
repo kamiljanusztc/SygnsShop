@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { removeFromCart } from '../../../redux/cartRedux.js';
@@ -25,37 +24,21 @@ class Component extends React.Component {
   }
 
   componentDidMount() {
-
     let localStorageData = localStorage.getItem('cart');
     let cart = JSON.parse(localStorageData);
     console.log('cart', cart);
     this.setState({ 'cart': cart });
-
-
-
-    //setState totalprice;
-    // this.setState({'totalPrice' : this.state.totalPrice +1});
-    // const newPrice =+ cart.price;
-    // this.setState({totalPrice: newPrice});
-
-    // const amount = cart.map((item) => {
-    //   return Number(item.quantity) * Number(item.price);
-    // } ).reduce( ( total, current ) => total += current );
-
-    // this.setState({totalAmount: amount});
   }
 
   render() {
     const { className, cart } = this.props;
 
     return (
-
       <div className={clsx(className, styles.root)}>
 
         {cart && cart.length > 0 ?
           <>
             <h3>Cart is currently empty</h3>
-
           </>
           :
           <>
@@ -64,7 +47,6 @@ class Component extends React.Component {
                 <ShoppingCartOutlinedIcon className={styles.cartIcon} />
                 <h4>My shopping cart</h4>
               </div>
-              {/* {cart && cart.map((item) => <CartItem key={item._id} {...item} />)} */}
               {this.state.cart.map((item) => (
                 <CartItem
                   key={item.product}
@@ -72,19 +54,10 @@ class Component extends React.Component {
                   removeHandler={() => this.fetchData()}
                 />
               ))}
-              {/* <CartItem/> */}
               <div className="row">
                 <div className="col-md-12">
                   <p className={styles.totalPrice}>
-                    Total price:
-
-                    {this.findSumUsingReduce()}
-
-
-
-
-
-                    {/* 999 € */}
+                    Total price: {this.findSumUsingReduce()} €
                   </p>
                   <Link className={styles.order} to="/order">Order</Link>
                 </div>
@@ -96,17 +69,6 @@ class Component extends React.Component {
     );
   }
 }
-
-const cartData = [
-  {
-    price: 23,
-  },
-  {
-    price: 27,
-  },
-];
-
-
 
 function findSumUsingReduce() {
   let sum = 0;
@@ -123,8 +85,6 @@ function fetchData() {
   this.setState({ 'cart': cart });
 }
 
-// const totalUsingMap = findSumUsingReduce();
-
 Component.propTypes = {
   className: PropTypes.string,
   cart: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -133,17 +93,7 @@ Component.propTypes = {
 
 const mapStateToProps = state => ({
   cart: state.cart,
-  // qtyChangeHandler:
-  // removeFromCartHandler:
 });
-
-// const qtyChangeHandler = (id, qty) => {
-//   dispatch(addToCart(id, qty));
-// };
-
-// const removeFromCartHandler = (id) => {
-//   dispatch(removeFromCart(id));
-// };
 
 const mapDispatchToProps = dispatch => ({
   removeFromCartHandler: (id) => dispatch(removeFromCart(id)),

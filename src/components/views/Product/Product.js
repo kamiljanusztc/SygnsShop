@@ -110,13 +110,6 @@ class Component extends React.Component {
   }
 }
 
-// const updateInputValue = (evt) =>{
-//   this.setState({
-//     quantity: evt.target.value
-//   });
-// };
-
-
 const addToTheCart = (product, quantity) =>{
   product.quantity = quantity;
   let localStorageData = localStorage.getItem('cart');
