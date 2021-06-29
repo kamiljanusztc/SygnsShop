@@ -11,23 +11,29 @@
     .orderBox {
       box-shadow: $box-shadow;
       border-radius: 5px;
-      padding: 30px 20px 0 20px;
+      padding: 60px 20px 30px 20px;
       margin: 40px 0 0 0;
+
+      .totalPrice {
+        margin: 30px 0;
+      }
 
       .products {
         display: flex;
         justify-content: center;
-        padding: 20px 0;
+        padding: 40px 0 10px 50px;
         text-align: center;
 
         .type {
           padding-right: 50px;
           text-align: right;
           color: $color-gray-text;
+          flex: 50%;
         }
 
         .content {
           text-align: left;
+          flex: 50%;
         }
       }
 

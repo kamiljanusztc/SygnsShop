@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 
@@ -34,15 +32,12 @@ class Component extends React.Component {
     return (
 
       <div className={clsx(className, styles.root)}>
-
         <div className={styles.orderContainer}>
           <h4>Order summary</h4>
           <div className="row">
             <div className="col-md-8">
               <div className={styles.orderBox}>
                 <h6>Products</h6>
-
-
                 {this.state.cart.map((item) => (
                   <div className={styles.products} key={item.id}>
                     <div className={styles.type}>
@@ -64,8 +59,6 @@ class Component extends React.Component {
                     </p>
                   </div>
                 </div>
-
-
               </div>
             </div>
             <div className="col-md-4">
@@ -85,8 +78,6 @@ class Component extends React.Component {
                     multiline
                     rowsMax={4}
                     fullWidth
-                    // value={value}
-                    // onChange={handleChange}
                   />
                 </form>
               </div>
@@ -112,18 +103,7 @@ Component.propTypes = {
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
-
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Component as Order,
-  // Container as Order,
   Component as OrderComponent,
 };
