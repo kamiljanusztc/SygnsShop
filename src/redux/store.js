@@ -1,6 +1,6 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 
 import { initialState } from './initialState';
 import { reducer as productsReducer } from './productsRedux';
