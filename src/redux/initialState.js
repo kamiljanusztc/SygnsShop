@@ -20,8 +20,8 @@ export const initialState = {
         price: 495,
         image: [
           '/images/products/boom.jpg',
-          '/images/products/boom-1.jpg',
           '/images/products/boom-2.jpg',
+          '/images/products/boom-3.jpg',
         ],
         quantity: 1,
       },

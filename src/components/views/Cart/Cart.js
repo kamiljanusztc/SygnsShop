@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
@@ -9,12 +8,16 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import { addToCart, removeFromCart  } from '../../../redux/cartRedux.js';
-// import { removeFromCart  } from '../../../redux/cartRedux.js';
+import { removeFromCart } from '../../../redux/cartRedux.js';
 import styles from './Cart.module.scss';
 import { CartItem } from '../CartItem/CartItem';
-// import { useDispatch } from 'react-redux';
 class Component extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.fetchData = fetchData.bind(this);
+    this.findSumUsingReduce = findSumUsingReduce.bind(this);
+  }
 
   state = {
     cart: [],
@@ -22,50 +25,34 @@ class Component extends React.Component {
   }
 
   componentDidMount() {
+
     let localStorageData = localStorage.getItem('cart');
     let cart = JSON.parse(localStorageData);
     console.log('cart', cart);
+    this.setState({ 'cart': cart });
+
+
 
     //setState totalprice;
     // this.setState({'totalPrice' : this.state.totalPrice +1});
     // const newPrice =+ cart.price;
     // this.setState({totalPrice: newPrice});
-    this.setState({'cart': cart});
 
-    const amount = cart.map((item) => {
-      return Number(item.quantity) * Number(item.price);
-    } ).reduce( ( total, current ) => total += current );
+    // const amount = cart.map((item) => {
+    //   return Number(item.quantity) * Number(item.price);
+    // } ).reduce( ( total, current ) => total += current );
 
-    this.setState({totalAmount: amount});
+    // this.setState({totalAmount: amount});
   }
 
-  // sumTotalAmount = this.sumTotalAmount.bind( this );
-
-  // sumTotalAmount() {
-  //   let cart = this.state.cart;
-  //   let totalAmount = cart.map( ( item ) => {
-  //     return Number(item.quantity) * Number(item.price);
-  //   } ).reduce( ( total, current ) => total += current );
-
-  //   this.setState( {
-  //     totalAmount,
-  //   } );
-  // }
-
   render() {
-    const {className, cart} = this.props;
-    // const { cartItems } = cart;
-
-    // const dispatch = useDispatch();
-    // const removeFromCartHandler = (id) => {
-    //   dispatch(removeFromCart(id));
-    // };
+    const { className, cart } = this.props;
 
     return (
 
       <div className={clsx(className, styles.root)}>
 
-        {cart && cart.length > 0  ?
+        {cart && cart.length > 0 ?
           <>
             <h3>Cart is currently empty</h3>
 
@@ -74,7 +61,7 @@ class Component extends React.Component {
           <>
             <div className={styles.cartContainer}>
               <div className={styles.cartTitle}>
-                <ShoppingCartOutlinedIcon className={styles.cartIcon}/>
+                <ShoppingCartOutlinedIcon className={styles.cartIcon} />
                 <h4>My shopping cart</h4>
               </div>
               {/* {cart && cart.map((item) => <CartItem key={item._id} {...item} />)} */}
@@ -82,7 +69,7 @@ class Component extends React.Component {
                 <CartItem
                   key={item.product}
                   item={item}
-                  // removeHandler={removeFromCartHandler}
+                  removeHandler={() => this.fetchData()}
                 />
               ))}
               {/* <CartItem/> */}
@@ -91,8 +78,7 @@ class Component extends React.Component {
                   <p className={styles.totalPrice}>
                     Total price:
 
-                    {totalUsingMap}
-                    {/* {totalPrice} */}
+                    {this.findSumUsingReduce()}
 
 
 
@@ -111,32 +97,33 @@ class Component extends React.Component {
   }
 }
 
-
 const cartData = [
   {
     price: 23,
-    id: 1,
   },
   {
     price: 27,
-    id: 2,
-  },
-  {
-    price: 60,
-    id: 2,
-  },
-  {
-    price: 40,
-    id: 4,
   },
 ];
 
-const findSumUsingReduce = () => {
-  const s = cartData.reduce((s, {price} ) => s + price, 0);
-  return s;
-};
 
-const totalUsingMap = findSumUsingReduce();
+
+function findSumUsingReduce() {
+  let sum = 0;
+  this.state.cart.forEach(item => {
+    sum += item.price * item.quantity;
+  });
+  return sum;
+}
+
+function fetchData() {
+  let localStorageData = localStorage.getItem('cart');
+  let cart = JSON.parse(localStorageData);
+  console.log('cart', cart);
+  this.setState({ 'cart': cart });
+}
+
+// const totalUsingMap = findSumUsingReduce();
 
 Component.propTypes = {
   className: PropTypes.string,
@@ -158,11 +145,11 @@ const mapStateToProps = state => ({
 //   dispatch(removeFromCart(id));
 // };
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = dispatch => ({
+  removeFromCartHandler: (id) => dispatch(removeFromCart(id)),
+});
 
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   // Component as Cart,

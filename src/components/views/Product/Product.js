@@ -95,7 +95,7 @@ class Component extends React.Component {
                 Quantity:
                 <input value={this.state.quantity} onChange={(env)=>this.setState({quantity: env.target.value})} className={styles.qty} type="number" id="quantity" name="quantity" min="1" max="5"/>
                 <p className={styles.cardItem}>
-                  {product.price} €
+                  {product.price*this.state.quantity} €
                 </p>
               </div>
               <Link className={styles.addToCart}
