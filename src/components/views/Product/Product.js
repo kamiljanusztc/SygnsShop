@@ -114,6 +114,7 @@ const addToTheCart = (product, quantity) =>{
   product.quantity = quantity;
   let localStorageData = localStorage.getItem('cart');
   let cart = JSON.parse(localStorageData);
+  if(cart == undefined) cart=[];
   cart.push(product);
   console.log('cart', cart);
   console.log('localStorageData', localStorageData);
