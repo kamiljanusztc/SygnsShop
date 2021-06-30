@@ -35,36 +35,30 @@ class Component extends React.Component {
 
     return (
       <div className={clsx(className, styles.root)}>
+        <div className={styles.cartContainer}>
+          <div className={styles.cartTitle}>
+            <ShoppingCartOutlinedIcon className={styles.cartIcon} />
+            <h4>My shopping cart</h4>
+          </div>
+          {this.state.cart.map((item) => (
 
-        {cart && cart.length > 0 ?
-          <>
-            <h3>Cart is currently empty</h3>
-          </>
-          :
-          <>
-            <div className={styles.cartContainer}>
-              <div className={styles.cartTitle}>
-                <ShoppingCartOutlinedIcon className={styles.cartIcon} />
-                <h4>My shopping cart</h4>
-              </div>
-              {this.state.cart.map((item) => (
-                <CartItem
-                  key={item.product}
-                  item={item}
-                  removeHandler={() => this.fetchData()}
-                />
-              ))}
-              <div className="row">
-                <div className="col-md-12">
-                  <p className={styles.totalPrice}>
+            <CartItem
+              key={item.product}
+              item={item}
+              removeHandler={() => this.fetchData()}
+            />
+          ))}
+          <div className="row">
+            <div className="col-md-12">
+              <p className={styles.totalPrice}>
                     Total price: {this.findSumUsingReduce()} €
-                  </p>
-                  <Link className={styles.order} to="/order">Order</Link>
-                </div>
-              </div>
+              </p>{this.state.cart && this.state.cart.length > 0 ? (
+                <Link className={styles.order} to="/order">Order</Link>
+              ) : null
+              }
             </div>
-          </>
-        }
+          </div>
+        </div>
       </div>
     );
   }

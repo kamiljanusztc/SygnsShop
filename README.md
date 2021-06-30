@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## See the project on heroku
-
+https://sygnshop.herokuapp.com/
 
 ## Available Scripts
 

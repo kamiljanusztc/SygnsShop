@@ -1,12 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import clsx from 'clsx';
 
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import styles from './Order.module.scss';
+// import { Button } from '@material-ui/core';
 
 class Component extends React.Component {
 
@@ -24,6 +26,11 @@ class Component extends React.Component {
     let cart = JSON.parse(localStorageData);
     console.log('cart', cart);
     this.setState({ 'cart': cart });
+  }
+
+  onSubmitHandler = (e) => {
+    e.preventDefault();
+    this.props.history.push('/success');
   }
 
   render() {
@@ -64,7 +71,7 @@ class Component extends React.Component {
             <div className="col-md-4">
               <div className={styles.orderBox}>
                 <h6>Shipping address</h6>
-                <form className={styles.form} noValidate autoComplete="off">
+                <form className={styles.form} validate autoComplete="off" onSubmit={this.onSubmitHandler}>
                   <TextField id="standard-basic" label="Name" required fullWidth />
                   <TextField id="standard-basic" label="Surname" fullWidth />
                   <TextField id="standard-basic" label="Company" fullWidth />
@@ -78,12 +85,14 @@ class Component extends React.Component {
                     multiline
                     rowsMax={4}
                     fullWidth
+                    value={this.state.message}
                   />
+                  <button className={styles.confirmOrder} type="submit" href="/success">Confirm</button>
                 </form>
               </div>
             </div>
+
           </div>
-          <Link className={styles.confirmOrder} to="/success">Confirm</Link>
         </div>
       </div>
     );
